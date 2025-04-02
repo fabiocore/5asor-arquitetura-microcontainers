@@ -41,8 +41,8 @@ Este guia pressupõe que o professor ou responsável pelo provisionamento e test
 - Uma conta AWS configurada;
 - Um usuário com direitos administrativos.
 - Consideramos o uso de um usuário de IAM e **NÃO** iremos abordar configurações com o AWS Identity Center.
-- [docker desktop](https://docs.docker.com/get-started/get-docker/) instalado e atualizado no Windows WSLv2 ou Mac.
 - [git-scm](https://git-scm.com/downloads)
+- [docker desktop](https://docs.docker.com/get-started/get-docker/) instalado e atualizado no Windows WSLv2 ou Mac se optar por configurar infra básica na AWS.
 
 ATENÇÃO! Não abordamos neste material:
 
@@ -61,26 +61,12 @@ ATENÇÃO! Não abordamos neste material:
 
 ## 4. Passo a Passo
 
-Antes de começar, clone este repositório em sua máquina e mude para o diretório recém clonado com os comandos abaixo:
+Nosso passo a passo pode ser executado de duas maneiras: desde o início, opcionalmente, criando a infraestrutura básica na AWS através de nossos scripts ou pulando esta estapa e indo diretamente para a configuração da instância com EC2.
 
-```bash
-# Clonar o REPO
-git clone git@github.com:fabiocore/5asor-arquitetura-microcontainers.git
+- Siga através dos itens 4.1. até 4.x. para provisionar a infra básica na AWS com VPC, subnets, rotas, internet gateway e instância EC2.
+- Siga os itens 4.x. até 4.x. se já tiver uma instância ativa e quiser configurar apenas o K3S, Wordpress e MySQL.
 
-# Criar um diretorio de trabalho e outputs "live"
-# Este diretorio está incluso no .gitignore
-mkdir live
-
-# Mudar para o diretório recém clonado
-cd 5asor-arquitetura-microcontainers
-```
-
-A seguir, este é nosso plano de implementação para infraestrutura, Kubernetes e aplicações:
-
-- [4.1. Configuração das credenciais do usuário](#41-configuração-das-credenciais-do-usuário)
-- (WIP)
-
-### 4.1. Configuração das credenciais do usuário
+### 4.1. Infra Básica - Configuração das credenciais do usuário
 
 Passo a passo para configuração das credenciais do usuário (AccessKey e SecretKey):
 
@@ -112,4 +98,21 @@ Faça o download do arquivo .csv com as credenciais de acesso dando um click em 
 ![Download Credentials](./imagens/download-credentials.png)
 > OBSERVAÇÃO: As Access Keys acima foram criadas temporariamente e não existem mais.
 
+### 4.2. Infra Básica - Provisionamento Automatizado
 
+Antes de começar, clone este repositório em sua máquina e mude para o diretório recém clonado com os comandos abaixo:
+
+```bash
+# Clonar o REPO
+git clone git@github.com:fabiocore/5asor-arquitetura-microcontainers.git
+
+# Criar um diretorio de trabalho e outputs chamado live
+# Este diretorio está incluso no .gitignore pois o Terraform gera um arquivo .pem para acesso a instância via ssh
+mkdir live # Linux ou Mac
+md live # PowerShell
+
+# Mudar para o diretório recém clonado
+cd 5asor-arquitetura-microcontainers
+```
+
+(WIP)
