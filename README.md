@@ -100,19 +100,19 @@ Faça o download do arquivo .csv com as credenciais de acesso dando um click em 
 
 ### 4.2. Infra Básica - Provisionamento Automatizado
 
-Antes de começar, clone este repositório em sua máquina e mude para o diretório recém clonado com os comandos abaixo:
+Antes de começar, utilizando um terminal, clone este repositório em sua máquina e mude para o diretório recém clonado com os comandos abaixo:
 
 ```bash
 # Clonar o REPO
 git clone git@github.com:fabiocore/5asor-arquitetura-microcontainers.git
 
-# Criar um diretorio de trabalho e outputs chamado live
-# Este diretorio está incluso no .gitignore pois o Terraform gera um arquivo .pem para acesso a instância via ssh
-mkdir live # Linux ou Mac
-md live # PowerShell
-
 # Mudar para o diretório recém clonado
 cd 5asor-arquitetura-microcontainers
+
+# Criar um diretorio de trabalho e outputs chamado live
+# Diretório está incluso no arquivo .gitignore
+mkdir live # Se Linux ou Mac
+md live # Se Windows PowerShell
 ```
 
 (WIP)
