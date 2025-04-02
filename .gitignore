@@ -1,3 +1,6 @@
+# live - diretorio de trabalho e outputs
+live/
+
 # Local .terraform directories
 **/.terraform/*
 

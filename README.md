@@ -49,7 +49,7 @@ ATENÇÃO! Não abordamos neste material:
 - Como criar ou configurar uma conta AWS.
 - Como adicionar usuários e políticas de acesso na AWS.
 
-:bangbang:: Os recursos provisionados por este laboratório geram custos!
+:bangbang: Os recursos provisionados por este laboratório geram custos!
 
 - Região: us-east-2
 - EC2 instance t3.medium: USD 0.0416 por hora
