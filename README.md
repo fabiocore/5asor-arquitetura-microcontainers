@@ -41,13 +41,16 @@ Este guia pressupõe que o professor ou responsável pelo provisionamento e test
 - Uma conta AWS configurada;
 - Um usuário com direitos administrativos.
 - Consideramos o uso de um usuário de IAM e **NÃO** iremos abordar configurações com o AWS Identity Center.
-- [docker desktop](https://docs.docker.com/get-started/get-docker/) instalado e atualizado (Windows, Mac ou Linux).
+- [docker desktop](https://docs.docker.com/get-started/get-docker/) instalado e atualizado no Windows WSLv2 ou Mac.
 - [git-scm](https://git-scm.com/downloads)
 
 ATENÇÃO! Não abordamos neste material:
 
 - Como criar ou configurar uma conta AWS.
 - Como adicionar usuários e políticas de acesso na AWS.
+- Como instalar e configurar o Windows WSLv2.
+- Instalar o docker desktop.
+- Instalar o git-scm.
 
 :bangbang: Os recursos provisionados por este laboratório geram custos!
 
@@ -63,6 +66,10 @@ Antes de começar, clone este repositório em sua máquina e mude para o diretó
 ```bash
 # Clonar o REPO
 git clone git@github.com:fabiocore/5asor-arquitetura-microcontainers.git
+
+# Criar um diretorio de trabalho e outputs "live"
+# Este diretorio está incluso no .gitignore
+mkdir live
 
 # Mudar para o diretório recém clonado
 cd 5asor-arquitetura-microcontainers
