@@ -190,7 +190,7 @@ Se tudo rodou direitinho(e esperamos que sim) você deve ver um output mais ou m
 
 O WordPress e o banco foram implantados com sucesso no cluster K3s.
 
-Aguarde alguns instantes até que todos os pods estejam em execução.
+ATENÇÃO: Por favor aguarde até no 5min para que os pods estejam 100% operacionais.
 
 Para validar a resiliência da solução, você pode executar o comando:
    kubectl delete pod <nome-do-pod>
