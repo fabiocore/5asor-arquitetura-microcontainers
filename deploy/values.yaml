@@ -13,14 +13,14 @@ mariadb:
   primary:
     persistence:
       enabled: true
-      storageClass: "standard" 
+      storageClass: "local-path"
       accessModes:
         - ReadWriteOnce
       size: 8Gi
 
 persistence:
   enabled: true
-  storageClass: "standard"
+  storageClass: "local-path"
   accessModes:
     - ReadWriteOnce
   size: 10Gi

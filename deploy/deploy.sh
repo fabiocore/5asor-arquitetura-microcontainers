@@ -71,7 +71,7 @@ sleep 1
 
 # 5. Exibir status dos pods e instruções
 echo "[5/5] Verificando o status dos pods..."
-kubectl get pods -l app=wordpress
+kubectl get pods
 
 # Aguardar uns segundos e limpar a tela para instruções finais
 sleep 5
