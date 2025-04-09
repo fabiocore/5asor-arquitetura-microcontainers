@@ -121,7 +121,7 @@ Agora vamos provisionar os seguintes items de infraestrutura básica:
 - VPC, network, subnet, route table, security group e internet gateway.
 - Instância EC2 que irá suportar o ambiente (t3a.xlarge -4vCPU -16GB RAM -30GB disco)
 
-> Antes de aplicar os comandos abaixo, certifique-se que você está com as variáveis de ambiente (AWS_ACCESS_KEY_ID e AWS_SECRET_ACCESS_KEY) configuradas ou tenha um perfil do aws cli configurado, pois conforme já citado, isto não faz parte do tutorial.
+> **ATENÇÃO!!!** Antes de aplicar os comandos abaixo, certifique-se que você está com as variáveis de ambiente AWS_ACCESS_KEY_ID e AWS_SECRET_ACCESS_KEY configuradas **ou** tenha um perfil "Default" configurado para o aws cli, caso contrário o comando irá falhar!
 
 ```bash
 # Mudar para o diretório terraform
