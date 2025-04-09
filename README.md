@@ -43,6 +43,7 @@ Este guia pressupõe que o professor ou responsável pelo provisionamento e test
 - Consideramos o uso de um usuário de IAM e **NÃO** iremos abordar configurações com o AWS Identity Center.
 - [git-scm](https://git-scm.com/downloads) na máquina local
 - Servidor com Ubuntu 22x ou superior
+- Se não for fazer o deploy usando o terraform fornecido neste repositório, garanta que a porta 80 da sua instância está aberta no security group.
 
 ATENÇÃO! Não abordamos neste material:
 
@@ -50,6 +51,7 @@ ATENÇÃO! Não abordamos neste material:
 - Como adicionar usuários e políticas de acesso na AWS.
 - Como instalar e configurar o Windows WSLv2.
 - Instalar o git-scm.
+- Configuração de load balancer.
 
 :bangbang: Os recursos provisionados por este laboratório geram custos!
 
