@@ -73,6 +73,10 @@ sleep 1
 echo "[5/5] Verificando o status dos pods..."
 kubectl get pods -l app=wordpress
 
+# Aguardar uns segundos e limpar a tela para instruções finais
+sleep 5
+clear
+
 echo "============================================"
 echo "       Deploy concluído com sucesso       "
 echo "============================================"
