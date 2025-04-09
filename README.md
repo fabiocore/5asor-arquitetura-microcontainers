@@ -54,7 +54,7 @@ ATENÇÃO! Não abordamos neste material:
 :bangbang: Os recursos provisionados por este laboratório geram custos!
 
 - Região: us-east-2
-- EC2 instance t3.medium: USD 0.0416 por hora
+- EC2 instance t3a.xlarge: USD 0.1504 por hora
 - Amazon EBS(gp3): USD 0,08GB-mês
 - Internet data transfer(outbound): 100GB free tier por mês
 
@@ -117,7 +117,7 @@ md live # Se Windows PowerShell
 Agora vamos provisionar os seguintes items de infraestrutura básica:
 
 - VPC, network, subnet, route table, security group e internet gateway.
-- Instância EC2 que irá suportar o ambiente (t3.medium -2vCPU -4GB RAM -30GB disco)
+- Instância EC2 que irá suportar o ambiente (t3a.xlarge -4vCPU -16GB RAM -30GB disco)
 
 > Antes de aplicar os comandos abaixo, certifique-se que você está com as variáveis de ambiente (AWS_ACCESS_KEY_ID e AWS_SECRET_ACCESS_KEY) configuradas ou tenha um perfil do aws cli configurado, pois conforme já citado, isto não faz parte do tutorial.
 
