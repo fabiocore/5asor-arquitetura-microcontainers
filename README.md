@@ -65,7 +65,7 @@ ATENÇÃO! Não abordamos neste material:
 Nosso passo a passo pode ser executado de duas maneiras: desde o início, opcionalmente, criando a infraestrutura básica na AWS através de nossos scripts ou pulando esta estapa e indo diretamente para a configuração da instância com EC2.
 
 - Siga através dos itens 4.1. até 4.2. para provisionar a infra básica na AWS com VPC, subnets, rotas, internet gateway e instância EC2.
-- Siga os itens 4.x. até 4.x. se já tiver uma instância ativa e quiser configurar apenas o K3S, Wordpress e MySQL.
+- Siga os itens 4.4. até 4.4. se já tiver uma instância ativa e quiser configurar apenas o K3S, Wordpress e MySQL.
 
 ### 4.1. Infra Básica - Configuração das credenciais do usuário
 
@@ -140,9 +140,11 @@ instance_public_ip = "18.221.9.27"
 ssh_command = "ssh -i '../live/5asor-wordpress-k3s-key.pem' ubuntu@18.221.9.27"
 ```
 
-O comando acima serve para se conectar no novo servidor e irá funcionar apenas enquanto a instância está ligada ou reiniciada, se o servidor for completamente desligado, destruído e recriado o ip irá mudar. <br />
+O comando acima serve para se conectar no novo servidor e irá funcionar apenas enquanto a instância está ligada ou reiniciada, o ip do servidor irá mudar se:
+- O servidor for completamente desligado e religado
+- O servidor for destruído e recriado
 
-Note que o arquivo de certificado privado está localizado em "../live", um diretório que está incluso no .gitignore do repositório. <br />
+Note que o arquivo de certificado privado está localizado em "../live" que é um diretório incluso no .gitignore do repositório. <br />
 
 Utilize o comando gerado no output (ssh_command) para se conectar ao seu novo servidor ou se você já está conectado a um servidor existente, vamos começar!
 
