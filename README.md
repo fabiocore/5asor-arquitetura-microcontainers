@@ -180,7 +180,47 @@ curl -sfL https://raw.githubusercontent.com/fabiocore/5asor-arquitetura-microcon
 Se tudo rodou direitinho você deve ver um output mais ou menos assim:
 
 ```txt
+============================================
+       Deploy concluído com sucesso
+============================================
 
+O WordPress e o banco foram implantados com sucesso no cluster K3s.
+
+Aguarde alguns instantes até que todos os pods estejam em execução.
+
+Para validar a resiliência da solução, você pode executar o comando:
+   kubectl delete pod <nome-do-pod>
+
+============================================
+       Acessando o Blog WordPress
+============================================
+
+Acesse o WordPress diretamente pelo IP público da instância EC2:
+>>>>> http://3.16.75.228 <<<<<
+
+Acesse a página de administração do WordPress:
+>>>>> http://3.16.75.228/wp-admin <<<<<
+username: admin5asor
+password: pizza-pepperoni-marguerita
+!!! Nem preciso dizer para mudar a senha logo agora, né? ;-)
+
+Obs.: Se desejar usar um domínio real, aponte seu DNS para esse IP.
+
+============================================
+         Fim ;-) Vale um 10?
+============================================
+ubuntu@ip-192-168-5-10:~$
 ```
 
-(WIP)
+:bowtie: That's all! Thank you very much!
+
+### 4.5 Destruir tudão via terraform
+
+:feelsgood: Caso tenha feito deploy via terraform, para destruir tudão, execute o comando abaixo:
+
+```bash
+# Dentro do diretorio terraform do repositório, execute:
+terraform destroy
+```
+
+fim.
