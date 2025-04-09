@@ -8,6 +8,9 @@ function error_exit {
 }
 
 # Garante que o kubectl e o helm encontrem o cluster K3s
+echo 'export KUBECONFIG=/etc/rancher/k3s/k3s.yaml' >> ~/.bashrc
+source ~/.bashrc
+# Medida desesperada caso não funcione acima, só pra garantir que o KUBECONFIG está definido
 if [ -z "$KUBECONFIG" ] && [ -f /etc/rancher/k3s/k3s.yaml ]; then
   export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
   echo "KUBECONFIG não definido. Usando /etc/rancher/k3s/k3s.yaml"
