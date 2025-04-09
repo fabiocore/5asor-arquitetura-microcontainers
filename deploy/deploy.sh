@@ -99,21 +99,10 @@ WORDPRESS_HOST=$(kubectl get ingress wordpress -o jsonpath='{.spec.rules[0].host
 # Pega o IP público da instância EC2 via metadata
 PUBLIC_IP=$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)
 
-if [ -n "$WORDPRESS_HOST" ] && [[ "$WORDPRESS_HOST" != *"fiap.com"* ]]; then
-  echo "Ingress encontrado! Use o hostname configurado:"
-  echo "http://$WORDPRESS_HOST"
-else
-  if [ -n "$PUBLIC_IP" ]; then
-    echo "Ingress está usando um hostname genérico ou não configurado corretamente."
-    echo "Acesse o WordPress diretamente pelo IP público da instância EC2:"
-    echo "http://$PUBLIC_IP"
-    echo ""
-    echo "Obs.: Se desejar usar um domínio real, aponte seu DNS para esse IP."
-  else
-    echo "Não foi possível obter o IP público da instância. Verifique a conectividade com o metadata service."
-  fi
-fi
-
+echo "Acesse o WordPress diretamente pelo IP público da instância EC2:"
+echo "http://$PUBLIC_IP"
+echo ""
+echo "Obs.: Se desejar usar um domínio real, aponte seu DNS para esse IP."
 echo ""
 echo "============================================"
 echo "         Fim ;-) Vale um 10?                "
