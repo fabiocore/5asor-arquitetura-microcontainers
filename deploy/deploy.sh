@@ -92,21 +92,25 @@ echo ""
 # Verifica se há um recurso Ingress criado para o WordPress
 WORDPRESS_HOST=$(kubectl get ingress wordpress -o jsonpath='{.spec.rules[0].host}' 2>/dev/null)
 
-if [ -n "$WORDPRESS_HOST" ]; then
+# Função para obter IP do nó
+function get_node_ip {
+  kubectl get nodes -o jsonpath='{.items[0].status.addresses[?(@.type=="InternalIP")].address}'
+}
+
+# Se host está configurado e não é só um placeholder
+if [ -n "$WORDPRESS_HOST" ] && [[ "$WORDPRESS_HOST" != *"fiap.com"* ]]; then
   echo "Ingress encontrado! Use o hostname configurado:"
   echo "http://$WORDPRESS_HOST"
 else
-  echo "Ingress não encontrado ou sem hostname configurado."
-  echo "Tentando obter o IP do nó do cluster..."
-  # Recupera o IP do primeiro nó do cluster (InternalIP)
-  NODE_IP=$(kubectl get nodes -o jsonpath='{.items[0].status.addresses[?(@.type=="InternalIP")].address}')
+  NODE_IP=$(get_node_ip)
   if [ -n "$NODE_IP" ]; then
-    echo "Acesse o blog WordPress via o IP do nó:"
+    echo "Ingress está usando um hostname genérico ou não configurado corretamente."
+    echo "Acesse o WordPress diretamente pelo IP do nó:"
     echo "http://$NODE_IP"
     echo ""
-    echo "Obs.: Caso o Ingress não esteja configurado, certifique-se de que o serviço do WordPress está exposto corretamente."
+    echo "Obs.: Se desejar usar domínio, configure corretamente o DNS apontando para este IP."
   else
-    echo "Não foi possível obter o IP do nó. Verifique o status do seu cluster K3s."
+    echo "Não foi possível obter o IP do nó. Verifique o status do seu cluster."
   fi
 fi
 
