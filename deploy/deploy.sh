@@ -83,6 +83,8 @@ kubectl get pods
 echo "============================================"
 echo "       Aguarde ~ 60s antes de conectar ok? "
 echo "============================================"
+echo "Limpando discretamente o diretorio deploy/..."
+rm -rf deploy
 sleep 10
 clear
 
