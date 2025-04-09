@@ -41,15 +41,14 @@ Este guia pressupõe que o professor ou responsável pelo provisionamento e test
 - Uma conta AWS configurada;
 - Um usuário com direitos administrativos.
 - Consideramos o uso de um usuário de IAM e **NÃO** iremos abordar configurações com o AWS Identity Center.
-- [git-scm](https://git-scm.com/downloads)
-- [docker desktop](https://docs.docker.com/get-started/get-docker/) instalado e atualizado no Windows WSLv2 ou Mac se optar por configurar infra básica na AWS.
+- [git-scm](https://git-scm.com/downloads) na máquina local
+- Servidor com Ubuntu 22x ou superior
 
 ATENÇÃO! Não abordamos neste material:
 
 - Como criar ou configurar uma conta AWS.
 - Como adicionar usuários e políticas de acesso na AWS.
 - Como instalar e configurar o Windows WSLv2.
-- Instalar o docker desktop.
 - Instalar o git-scm.
 
 :bangbang: Os recursos provisionados por este laboratório geram custos!
@@ -63,7 +62,7 @@ ATENÇÃO! Não abordamos neste material:
 
 Nosso passo a passo pode ser executado de duas maneiras: desde o início, opcionalmente, criando a infraestrutura básica na AWS através de nossos scripts ou pulando esta estapa e indo diretamente para a configuração da instância com EC2.
 
-- Siga através dos itens 4.1. até 4.x. para provisionar a infra básica na AWS com VPC, subnets, rotas, internet gateway e instância EC2.
+- Siga através dos itens 4.1. até 4.2. para provisionar a infra básica na AWS com VPC, subnets, rotas, internet gateway e instância EC2.
 - Siga os itens 4.x. até 4.x. se já tiver uma instância ativa e quiser configurar apenas o K3S, Wordpress e MySQL.
 
 ### 4.1. Infra Básica - Configuração das credenciais do usuário
@@ -114,5 +113,59 @@ cd 5asor-arquitetura-microcontainers
 mkdir live # Se Linux ou Mac
 md live # Se Windows PowerShell
 ```
+
+Agora vamos provisionar os seguintes items de infraestrutura básica:
+
+- VPC, network, subnet, route table, security group e internet gateway.
+- Instância EC2 que irá suportar o ambiente (t3.medium -2vCPU -4GB RAM -30GB disco)
+
+> Antes de aplicar os comandos abaixo, certifique-se que você está com as variáveis de ambiente (AWS_ACCESS_KEY_ID e AWS_SECRET_ACCESS_KEY) configuradas ou tenha um perfil do aws cli configurado, pois conforme já citado, isto não faz parte do tutorial.
+
+```bash
+# Mudar para o diretório terraform
+cd terraform
+
+# Plan & Apply da infra
+terraform plan && terraform apply --auto-approve
+```
+
+Se tudo correu bem, você deve ter recebido uma mensagem de output parecida com esta abaixo:
+
+```bash
+Outputs:
+
+instance_public_ip = "18.221.9.27"
+ssh_command = "ssh -i '../live/5asor-wordpress-k3s-key.pem' ubuntu@18.221.9.27"
+```
+
+O comando acima serve para se conectar no novo servidor e irá funcionar apenas enquanto a instância está ligada ou reiniciada, se o servidor for completamente desligado, destruído e recriado o ip irá mudar. <br />
+
+Note que o arquivo de certificado privado está localizado em "../live", um diretório que está incluso no .gitignore do repositório. <br />
+
+Utilize o comando gerado no output (ssh_command) para se conectar ao seu novo servidor ou se você já está conectado a um servidor existente, vamos começar!
+
+### 4.3 Instalando o K3S
+
+O K3s é uma distribuição leve do Kubernetes, projetada para ambientes com poucos recursos, como IoT, edge computing e desenvolvimento local. Ele simplifica a implantação e o gerenciamento de clusters Kubernetes, mantendo a compatibilidade com o ecossistema.
+
+Para instalar o K3S, execute a linha de comando abaixo:
+
+```bash
+curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
+```
+
+Teste para ver se está funcionando:
+
+```bash
+kubectl get nodes
+```
+Se tudo estiver correto você deve ver um output parecido com o abaixo:
+
+```txt
+ubuntu@ip-192-168-5-12:~$ kubectl get nodes
+NAME              STATUS   ROLES                  AGE   VERSION
+ip-192-168-5-12   Ready    control-plane,master   19s   v1.32.3+k3s1
+```
+
 
 (WIP)

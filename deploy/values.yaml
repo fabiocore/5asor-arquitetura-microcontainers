@@ -1,0 +1,36 @@
+# deploy/values.yaml
+wordpressUsername: admin5asor
+wordpressPassword: pizza-pepperoni-marguerita # p4ss inicial do wp
+wordpressEmail: admin@5asor.fiap.com
+wordpressFirstName: "Marketing"
+wordpressLastName: "5ASOR FIAP"
+wordpressBlogName: "Blog da 5ASOR Fiap"
+
+mariadb:
+  auth:
+    rootPassword: mariadbrootpass
+    password: pizza-file-4queijos # p4ss inicial do banco
+  primary:
+    persistence:
+      enabled: true
+      storageClass: "standard" 
+      accessModes:
+        - ReadWriteOnce
+      size: 8Gi
+
+persistence:
+  enabled: true
+  storageClass: "standard"
+  accessModes:
+    - ReadWriteOnce
+  size: 10Gi
+
+service:
+  type: ClusterIP
+
+ingress:
+  enabled: true
+  hostname: wordpress.fiap.com  # Utilizar o IP para testes ou altere para algum domínio que possua
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  tls: []  # Config TLS
