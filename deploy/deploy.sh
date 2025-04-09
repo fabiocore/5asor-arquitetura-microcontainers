@@ -80,12 +80,13 @@ echo "[5/5] Verificando o status dos pods..."
 kubectl get pods
 
 # Aguardar uns segundos e limpar a tela para instruções finais
+echo ""
 echo "============================================"
 echo "       Aguarde ~ 60s antes de conectar ok? "
 echo "============================================"
 echo "Limpando discretamente o diretorio deploy/..."
 rm -rf deploy
-sleep 10
+sleep 7
 clear
 
 echo "============================================"
