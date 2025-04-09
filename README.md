@@ -171,10 +171,16 @@ ip-192-168-5-12   Ready    control-plane,master   19s   v1.32.3+k3s1
 
 A instalação do WordPress e banco de dados está automatizada através de um script de deploy neste repositório (deploy/deploy.sh) e um arquivo values.yaml(deploy/values.yaml) utilizando helm. <br />
 
-Faça o deploy automatizado através do script executando o comando abaixo:
+Faça o deploy automatizado através do script executando o comando abaixo: <br />
 
 ```bash
 curl -sfL https://raw.githubusercontent.com/fabiocore/5asor-arquitetura-microcontainers/main/deploy/deploy.sh | bash
+```
+
+Se tudo rodou direitinho você deve ver um output mais ou menos assim:
+
+```txt
+
 ```
 
 (WIP)

@@ -112,7 +112,13 @@ WORDPRESS_HOST=$(kubectl get ingress wordpress -o jsonpath='{.spec.rules[0].host
 PUBLIC_IP=$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)
 
 echo "Acesse o WordPress diretamente pelo IP público da instância EC2:"
-echo "http://$PUBLIC_IP"
+echo ">>>>> http://$PUBLIC_IP <<<<<"
+echo ""
+echo "Acesse a página de administração do WordPress:"
+echo ">>>>> http://$PUBLIC_IP/wp-admin <<<<<"
+echo "username: admin5asor"
+echo "password: pizza-pepperoni-marguerita"
+echo "!!! Nem preciso dizer para mudar a senha logo agora, né? ;-)"
 echo ""
 echo "Obs.: Se desejar usar um domínio real, aponte seu DNS para esse IP."
 echo ""
