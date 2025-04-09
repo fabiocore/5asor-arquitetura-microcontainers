@@ -1,4 +1,6 @@
 # deploy/values.yaml
+replicaCount: 2
+
 wordpressUsername: admin5asor
 wordpressPassword: pizza-pepperoni-marguerita # p4ss inicial do wp
 wordpressEmail: admin@5asor.fiap.com
