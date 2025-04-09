@@ -7,6 +7,12 @@ function error_exit {
   exit 1
 }
 
+# Garante que o kubectl e o helm encontrem o cluster K3s
+if [ -z "$KUBECONFIG" ] && [ -f /etc/rancher/k3s/k3s.yaml ]; then
+  export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+  echo "KUBECONFIG não definido. Usando /etc/rancher/k3s/k3s.yaml"
+fi
+
 echo "============================================"
 echo "   Iniciando deploy do ambiente WordPress   "
 echo "============================================"
