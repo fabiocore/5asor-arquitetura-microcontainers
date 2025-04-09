@@ -179,7 +179,7 @@ Faça o deploy automatizado através do script executando o comando abaixo: <br 
 curl -sfL https://raw.githubusercontent.com/fabiocore/5asor-arquitetura-microcontainers/main/deploy/deploy.sh | bash
 ```
 
-Se tudo rodou direitinho você deve ver um output mais ou menos assim:
+Se tudo rodou direitinho(e esperamos que sim) você deve ver um output mais ou menos assim:
 
 ```txt
 ============================================
@@ -213,6 +213,11 @@ Obs.: Se desejar usar um domínio real, aponte seu DNS para esse IP.
 ============================================
 ubuntu@ip-192-168-5-10:~$
 ```
+<br />
+
+**`Siga as instruções na tela do seu servidor para acessar a página do wordpress e a página de admin(troque a senha)`**
+
+<br />
 
 :bowtie: That's all! Thank you very much!
 
