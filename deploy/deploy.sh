@@ -70,6 +70,9 @@ sleep 1
 # 4. Deploy do WordPress e MariaDB via Helm
 echo "[4/5] Realizando o deploy do WordPress (com MariaDB) usando Helm..."
 helm upgrade --install wordpress bitnami/wordpress --values deploy/values.yaml || error_exit "Falha no deploy via Helm."
+
+echo "Aplicando Ingress adicional para acesso via IP público..."
+curl -sfL https://raw.githubusercontent.com/fabiocore/5asor-arquitetura-microcontainers/main/deploy/wordpress-ingress-ip.yaml | kubectl apply -f - || error_exit "Falha ao aplicar Ingress IP."
 sleep 1
 
 # 5. Exibir status dos pods e instruções
