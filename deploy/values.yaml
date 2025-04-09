@@ -29,8 +29,4 @@ service:
   type: ClusterIP
 
 ingress:
-  enabled: true
-  hostname: wordpress.fiap.com  # Vamos utilizar o IP mas pode ser colocado o domínio aqui
-  annotations:
-    kubernetes.io/ingress.class: nginx
-  tls: false
+  enabled: false
